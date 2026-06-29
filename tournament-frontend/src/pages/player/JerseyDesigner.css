@@ -1,0 +1,178 @@
+.jd-layout {
+  display: grid;
+  grid-template-columns: minmax(320px, 1fr) minmax(360px, auto);
+  gap: 24px;
+  align-items: start;
+}
+
+.jd-controls-card {
+  background: rgba(13, 17, 33, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+}
+
+.jd-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 12px;
+}
+
+.jd-icon-header {
+  color: var(--accent);
+  font-size: 20px;
+}
+
+.jd-header h3 {
+  margin: 0;
+  font-weight: 800;
+  font-size: 18px;
+  color: #ffffff;
+}
+
+.jd-form-group {
+  margin-bottom: 18px;
+}
+
+.jd-label {
+  display: block;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  letter-spacing: 0.05em;
+  margin-bottom: 8px;
+}
+
+.jd-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.jd-color-pickers {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.jd-color-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.jd-color-input-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #0b0e17;
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  border-radius: 10px;
+  padding: 6px 12px;
+  height: 48px;
+}
+
+.jd-color-input-container input[type="color"] {
+  border: 0;
+  background: transparent;
+  padding: 0;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  border-radius: 6px;
+}
+
+.jd-color-hex {
+  font-size: 13px;
+  font-weight: 700;
+  font-family: monospace;
+  color: var(--text-primary);
+}
+
+.jd-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.jd-btn-action {
+  flex: 1;
+}
+
+.jd-btn-reset {
+  min-height: 46px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.03);
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 13px;
+  padding: 0 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.25s ease;
+}
+
+.jd-btn-reset:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Trading Card Preview Styling */
+.jd-preview-card {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  background: radial-gradient(circle at center, rgba(99, 102, 241, 0.08) 0%, transparent 70%);
+  border-radius: 20px;
+  border: 1px dashed rgba(99, 102, 241, 0.25);
+  min-height: 430px;
+  perspective: 1000px;
+}
+
+.jd-preview-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 250px;
+  height: 350px;
+  background: var(--primary);
+  filter: blur(80px);
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.jd-canvas-element {
+  display: block;
+  border-radius: 20px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6),
+              0 0 35px rgba(99, 102, 241, 0.15);
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+              box-shadow 0.4s ease;
+  transform-style: preserve-3d;
+  cursor: grab;
+}
+
+.jd-canvas-element:hover {
+  transform: scale(1.02) rotateY(4deg) rotateX(2deg);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.75),
+              0 0 50px rgba(99, 102, 241, 0.35);
+}
+
+@media (max-width: 800px) {
+  .jd-layout {
+    grid-template-columns: 1fr;
+  }
+}

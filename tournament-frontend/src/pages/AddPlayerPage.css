@@ -1,0 +1,176 @@
+@import "./organizer/AddTeams.css";
+
+/* Customize team-icon badge inside player list card to match active players styling */
+.team-item .team-icon {
+  background: rgba(59, 130, 246, 0.15);
+  color: #60a5fa;
+  font-weight: 850;
+  font-size: 13px;
+}
+
+.clickable-team {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid var(--border);
+  background: rgba(15, 23, 42, 0.3) !important;
+}
+
+.clickable-team:hover {
+  transform: translateY(-2px);
+  border-color: rgba(99, 102, 241, 0.5) !important;
+  background: rgba(99, 102, 241, 0.05) !important;
+}
+
+.clickable-team.active-team-card {
+  border-color: var(--primary) !important;
+  background: rgba(99, 102, 241, 0.12) !important;
+  box-shadow: 0 0 12px rgba(99, 102, 241, 0.15);
+}
+
+.clickable-team.active-team-card .team-icon {
+  background: var(--primary) !important;
+  color: #ffffff !important;
+}
+
+/* Make form column sticky on large screens so it doesn't scroll out of view */
+@media (min-width: 901px) {
+  .ops-grid > div:first-child {
+    position: sticky;
+    top: 20px;
+    align-self: start;
+  }
+}
+
+/* Scrollable containers to balance layout height */
+.available-teams-scrollable {
+  max-height: 250px;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+.players-roster-scrollable {
+  max-height: 520px;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+/* Custom premium thin scrollbar */
+.available-teams-scrollable::-webkit-scrollbar,
+.players-roster-scrollable::-webkit-scrollbar {
+  width: 6px;
+}
+
+.available-teams-scrollable::-webkit-scrollbar-track,
+.players-roster-scrollable::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 3px;
+}
+
+.available-teams-scrollable::-webkit-scrollbar-thumb,
+.players-roster-scrollable::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  transition: background 0.2s;
+}
+
+.available-teams-scrollable::-webkit-scrollbar-thumb:hover,
+.players-roster-scrollable::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+/* Edit action icon button inside team roster list */
+.edit-action-btn {
+  background: rgba(59, 130, 246, 0.12);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  color: #60a5fa;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0;
+}
+
+.edit-action-btn:hover {
+  background: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+  transform: translateY(-1px) scale(1.05);
+  box-shadow: 0 4px 10px rgba(59, 130, 246, 0.25);
+}
+
+/* Modal Overlay for Edit Player */
+.player-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(6, 9, 17, 0.82);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.player-modal-card {
+  background: rgba(15, 23, 42, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+  padding: 26px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.player-modal-header {
+  margin-bottom: 22px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  padding-bottom: 14px;
+}
+
+.player-modal-header h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 850;
+  color: #ffffff;
+}
+
+.player-modal-header p {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.player-modal-body {
+  margin-bottom: 24px;
+}
+
+.player-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.ops-cancel-btn {
+  min-height: 44px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 0 20px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-primary);
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ops-cancel-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}

@@ -1,0 +1,21 @@
+@import "./AddTeams.css";
+
+.preview-list {
+  display: grid;
+  gap: 10px;
+}
+
+.preview-list p {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  margin: 0;
+  padding: 12px;
+  color: var(--text-secondary);
+  background: rgba(15, 23, 42, 0.4);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.preview-list strong {
+  color: #ffffff;
+}

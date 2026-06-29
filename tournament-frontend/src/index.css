@@ -1,0 +1,488 @@
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background-color: #04060a;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(139, 92, 246, 0.04) 0px, transparent 50%),
+    radial-gradient(at 50% 0%, rgba(34, 211, 238, 0.04) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(244, 63, 94, 0.04) 0px, transparent 50%);
+  color: #f8fafc;
+  font-family: 'Outfit', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  overflow-x: hidden;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: 'Fira Code', Consolas, Monaco, monospace;
+  font-size: 0.9em;
+}
+
+/* Custom Premium Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #060911;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(129, 140, 248, 0.2);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #818cf8;
+}
+
+/* Global Transition Smoothness */
+* {
+  box-sizing: border-box;
+  transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* In-app Toast Notification styling */
+.toast-container {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.in-app-toast {
+  pointer-events: auto;
+  min-width: 320px;
+  max-width: 450px;
+  padding: 14px 18px;
+  border-radius: 10px;
+  color: #ffffff;
+  font-size: 13.5px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(12px);
+  animation: toastSlideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1), toastFadeOut 0.3s ease forwards 3.7s;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+}
+
+.in-app-toast.success {
+  background: rgba(16, 185, 129, 0.95);
+  border-left: 5px solid #059669;
+}
+
+.in-app-toast.error {
+  background: rgba(239, 68, 68, 0.95);
+  border-left: 5px solid #dc2626;
+}
+
+.in-app-toast.warning {
+  background: rgba(245, 158, 11, 0.95);
+  border-left: 5px solid #d97706;
+}
+
+.toast-close-btn {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  font-size: 18px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+  line-height: 1;
+}
+
+.toast-close-btn:hover {
+  color: #ffffff;
+}
+
+@keyframes toastSlideIn {
+  from {
+    transform: translateX(120%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes toastFadeOut {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+}
+
+/* Custom Time Picker Layout */
+.msw-time-picker-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  min-height: 40px;
+  padding: 0 12px;
+  width: 100%;
+}
+
+.msw-time-select,
+.msw-time-period-select {
+  background: transparent !important;
+  border: none !important;
+  color: var(--text-primary) !important;
+  outline: none !important;
+  padding: 0 !important;
+  min-height: auto !important;
+  font-size: 13px;
+  cursor: pointer;
+  width: auto !important;
+  text-align: center;
+}
+
+.msw-time-select option,
+.msw-time-period-select option {
+  background: #1e293b;
+  color: var(--text-primary);
+}
+
+.msw-time-separator {
+  color: var(--text-secondary);
+  font-weight: 800;
+  font-size: 14px;
+}
+
+/* Custom Premium 3D Modals */
+.custom-premium-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 11000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(4, 5, 10, 0.85);
+  backdrop-filter: blur(16px);
+  padding: 20px;
+}
+
+.custom-premium-modal-card {
+  position: relative;
+  background: linear-gradient(135deg, rgba(13, 17, 33, 0.85) 0%, rgba(8, 10, 18, 0.95) 100%);
+  border: 1px solid rgba(99, 102, 241, 0.35);
+  border-radius: 16px;
+  width: 100%;
+  max-width: 440px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 
+              0 0 30px rgba(99, 102, 241, 0.15),
+              inset 0 0 20px rgba(255, 255, 255, 0.03);
+  transform-style: preserve-3d;
+  animation: popIn3D 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  overflow: hidden;
+}
+
+@keyframes popIn3D {
+  0% {
+    transform: perspective(1000px) rotateX(20deg) rotateY(10deg) scale(0.7) translateY(40px);
+    opacity: 0;
+  }
+  100% {
+    transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale(1) translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-3d-glow {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.modal-header-icon {
+  font-size: 38px;
+  margin-bottom: 16px;
+  display: inline-block;
+  animation: floatIcon 3s ease-in-out infinite;
+  z-index: 1;
+  position: relative;
+  text-shadow: 0 0 20px rgba(245, 158, 11, 0.4);
+}
+
+.modal-header-icon.alert-icon {
+  text-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+}
+
+@keyframes floatIcon {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(5deg);
+  }
+}
+
+.custom-premium-modal-card h3 {
+  margin: 0 0 12px 0;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: #ffffff;
+  z-index: 1;
+  position: relative;
+}
+
+.custom-premium-modal-card p {
+  margin: 0 0 24px 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #94a3b8;
+  z-index: 1;
+  position: relative;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  z-index: 1;
+  position: relative;
+}
+
+.modal-btn-cancel {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #94a3b8;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.modal-btn-cancel:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.modal-btn-confirm {
+  flex: 1;
+  background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+  border: none;
+  color: #ffffff;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+  transition: all 0.25s ease;
+}
+
+.modal-btn-confirm:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(99, 102, 241, 0.5);
+  background: linear-gradient(135deg, #818cf8 0%, #6366f1 100%);
+}
+
+/* Global Form Controls & Inputs Neon Focus */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="date"],
+select,
+textarea {
+  background: rgba(13, 17, 33, 0.6) !important;
+  border: 1px solid rgba(99, 102, 241, 0.25) !important;
+  color: #f8fafc !important;
+  border-radius: 8px !important;
+  padding: 10px 14px !important;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+input[type="date"]:focus,
+select:focus,
+textarea:focus {
+  border-color: #818cf8 !important;
+  outline: none !important;
+  box-shadow: 0 0 12px rgba(129, 140, 248, 0.25), inset 0 0 8px rgba(129, 140, 248, 0.05) !important;
+}
+
+/* Glassmorphic Cards Global Helper */
+.card,
+.glass-card {
+  background: rgba(13, 17, 33, 0.7) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border: 1px solid rgba(99, 102, 241, 0.2) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45) !important;
+  transition: all 0.25s ease !important;
+}
+
+.card:hover,
+.glass-card:hover {
+  border-color: rgba(99, 102, 241, 0.35) !important;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.55), 0 0 15px rgba(99, 102, 241, 0.08) !important;
+  transform: translateY(-2px);
+}
+
+/* Chrome/Edge autofill override to preserve dark mode aesthetics */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px #0b0e17 inset !important;
+  -webkit-text-fill-color: #f8fafc !important;
+  caret-color: #f8fafc !important;
+  transition: background-color 5000s ease-in-out 0s !important;
+}
+
+input:-internal-autofill-previewed {
+  -webkit-box-shadow: 0 0 0 1000px #0b0e17 inset !important;
+  -webkit-text-fill-color: #f8fafc !important;
+  transition: background-color 5000s ease-in-out 0s !important;
+}
+
+input:-internal-autofill-selected {
+  -webkit-box-shadow: 0 0 0 1000px #0b0e17 inset !important;
+  -webkit-text-fill-color: #f8fafc !important;
+  transition: background-color 5000s ease-in-out 0s !important;
+}
+
+/* Standardize operations input group wrappers globally */
+.ops-input {
+  background: #0b0e17 !important;
+  border: 1px solid rgba(99, 102, 241, 0.25) !important;
+  box-shadow: none !important;
+  transition: all 0.25s ease !important;
+}
+
+.ops-input:focus-within {
+  border-color: #818cf8 !important;
+  box-shadow: 0 0 12px rgba(129, 140, 248, 0.25) !important;
+  background: #0e1220 !important;
+}
+
+/* Prevent global input overrides inside ops-input, auth-input-group, and time picker */
+.ops-input input,
+.ops-input select,
+.auth-input-group input,
+.auth-input-group select,
+.msw-time-picker-box input,
+.msw-time-picker-box select {
+  border: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  outline: 0 !important;
+}
+
+/* Highly specific browser-autofill rules that override box-shadow: none !important */
+.ops-input input:-webkit-autofill,
+.ops-input input:-webkit-autofill:hover, 
+.ops-input input:-webkit-autofill:focus, 
+.ops-input input:-webkit-autofill:active,
+.auth-input-group input:-webkit-autofill,
+.auth-input-group input:-webkit-autofill:hover, 
+.auth-input-group input:-webkit-autofill:focus, 
+.auth-input-group input:-webkit-autofill:active,
+.msw-time-picker-box input:-webkit-autofill,
+.msw-time-picker-box input:-webkit-autofill:hover, 
+.msw-time-picker-box input:-webkit-autofill:focus, 
+.msw-time-picker-box input:-webkit-autofill:active,
+.auth-page .auth-input-group input:-webkit-autofill,
+.auth-page .auth-input-group input:-webkit-autofill:hover,
+.auth-page .auth-input-group input:-webkit-autofill:focus,
+.auth-page .auth-input-group input:-webkit-autofill:active,
+input[type="text"]:-webkit-autofill,
+input[type="text"]:-webkit-autofill:hover,
+input[type="text"]:-webkit-autofill:focus,
+input[type="text"]:-webkit-autofill:active,
+input[type="email"]:-webkit-autofill,
+input[type="email"]:-webkit-autofill:hover,
+input[type="email"]:-webkit-autofill:focus,
+input[type="email"]:-webkit-autofill:active,
+input[type="password"]:-webkit-autofill,
+input[type="password"]:-webkit-autofill:hover,
+input[type="password"]:-webkit-autofill:focus,
+input[type="password"]:-webkit-autofill:active,
+input[type="number"]:-webkit-autofill,
+input[type="number"]:-webkit-autofill:hover,
+input[type="number"]:-webkit-autofill:focus,
+input[type="number"]:-webkit-autofill:active,
+input[type="date"]:-webkit-autofill,
+input[type="date"]:-webkit-autofill:hover,
+input[type="date"]:-webkit-autofill:focus,
+input[type="date"]:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px #0b0e17 inset !important;
+  -webkit-text-fill-color: #f8fafc !important;
+  caret-color: #f8fafc !important;
+  transition: background-color 5000s ease-in-out 0s !important;
+}
+
+.ops-input input:-internal-autofill-previewed,
+.ops-input input:-internal-autofill-selected,
+.auth-input-group input:-internal-autofill-previewed,
+.auth-input-group input:-internal-autofill-selected,
+.msw-time-picker-box input:-internal-autofill-previewed,
+.msw-time-picker-box input:-internal-autofill-selected,
+.auth-page .auth-input-group input:-internal-autofill-previewed,
+.auth-page .auth-input-group input:-internal-autofill-selected,
+input[type="text"]:-internal-autofill-previewed,
+input[type="text"]:-internal-autofill-selected,
+input[type="email"]:-internal-autofill-previewed,
+input[type="email"]:-internal-autofill-selected,
+input[type="password"]:-internal-autofill-previewed,
+input[type="password"]:-internal-autofill-selected,
+input[type="number"]:-internal-autofill-previewed,
+input[type="number"]:-internal-autofill-selected,
+input[type="date"]:-internal-autofill-previewed,
+input[type="date"]:-internal-autofill-selected {
+  -webkit-box-shadow: 0 0 0 1000px #0b0e17 inset !important;
+  -webkit-text-fill-color: #f8fafc !important;
+  transition: background-color 5000s ease-in-out 0s !important;
+}
+
+
+
